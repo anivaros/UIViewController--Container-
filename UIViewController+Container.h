@@ -11,9 +11,10 @@
 @interface UIViewController (Container)
 
 - (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view resizeToContainer:(BOOL)resizeToContainer useAutolayout:(BOOL)autolayout;
-- (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view;
 - (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view resizeToContainer:(BOOL)resizeToContainer;
+- (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view;
 - (void)containerAddChildViewController:(UIViewController *)childViewController;
+
 - (void)containerRemoveChildViewController:(UIViewController *)childViewController;
 - (void)containerRemoveFromParentViewController;
 

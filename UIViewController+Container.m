@@ -40,18 +40,18 @@
     }
 }
 
-- (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view {
-	[self containerAddChildViewController:childViewController
-						  toContainerView:view
-						resizeToContainer:NO
-							useAutolayout:NO];
-
-}
-
 - (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view resizeToContainer:(BOOL)resizeToContainer{
 	[self containerAddChildViewController:childViewController
 						  toContainerView:view
 						resizeToContainer:resizeToContainer
+							useAutolayout:NO];
+	
+}
+
+- (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view {
+	[self containerAddChildViewController:childViewController
+						  toContainerView:view
+						resizeToContainer:NO
 							useAutolayout:NO];
 
 }
