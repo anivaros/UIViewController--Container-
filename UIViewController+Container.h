@@ -10,8 +10,6 @@
 
 @interface UIViewController (Container)
 
-- (void)containerAddChildViewController:(UIViewController *)childViewController parentView:(UIView *)view __attribute__((deprecated(use containerAddChildViewController:toContainerView:)));
-
 - (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view useAutolayout:(BOOL)autolayout;
 
 - (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view;

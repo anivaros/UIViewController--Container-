@@ -10,9 +10,6 @@
 
 @implementation UIViewController (Container)
 
-- (void)containerAddChildViewController:(UIViewController *)childViewController parentView:(UIView *)view {
-    [self containerAddChildViewController:childViewController toContainerView:view];
-}
 
 - (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view useAutolayout:(BOOL)autolayout {
     
