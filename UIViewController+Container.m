@@ -10,17 +10,20 @@
 
 @implementation UIViewController (Container)
 
+- (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view resizeToContainer:(BOOL)resizeToContainer useAutolayout:(BOOL)autolayout {
+	
+	[self addChildViewController:childViewController];
 
-- (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view useAutolayout:(BOOL)autolayout {
-    
-    childViewController.view.frame = CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height);
-    
-    [self addChildViewController:childViewController];
-    [view addSubview:childViewController.view];
+    if (resizeToContainer){
+		childViewController.view.frame = view.bounds;
+		childViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	}
+
+	[view addSubview:childViewController.view];
     [childViewController didMoveToParentViewController:self];
     [view bringSubviewToFront:childViewController.view];
     
-    if (autolayout) {
+    if (resizeToContainer && autolayout) {
         UIView * parent = view;
         UIView * child = childViewController.view;
         [child setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -35,23 +38,29 @@
                                                                          views:NSDictionaryOfVariableBindings(child)]];
         [parent layoutIfNeeded];
     }
-    
 }
 
 - (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view {
+	[self containerAddChildViewController:childViewController
+						  toContainerView:view
+						resizeToContainer:NO
+							useAutolayout:NO];
 
-    [self containerAddChildViewController:childViewController toContainerView:view useAutolayout:NO];
+}
+
+- (void)containerAddChildViewController:(UIViewController *)childViewController toContainerView:(UIView *)view resizeToContainer:(BOOL)resizeToContainer{
+	[self containerAddChildViewController:childViewController
+						  toContainerView:view
+						resizeToContainer:resizeToContainer
+							useAutolayout:NO];
 
 }
 
 - (void)containerAddChildViewController:(UIViewController *)childViewController {
-
     [self containerAddChildViewController:childViewController toContainerView:self.view];
-    
 }
 
 - (void)containerRemoveChildViewController:(UIViewController *)childViewController {
- 
     [childViewController willMoveToParentViewController:nil];
     [childViewController.view removeFromSuperview];
     [childViewController removeFromParentViewController];
