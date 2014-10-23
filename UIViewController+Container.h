@@ -17,5 +17,6 @@
 - (void)containerAddChildViewController:(UIViewController *)childViewController;
 
 - (void)containerRemoveChildViewController:(UIViewController *)childViewController;
+- (void)containerRemoveFromParentViewController;
 
 @end

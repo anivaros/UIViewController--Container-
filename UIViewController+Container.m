@@ -55,7 +55,12 @@
     [childViewController willMoveToParentViewController:nil];
     [childViewController.view removeFromSuperview];
     [childViewController removeFromParentViewController];
+}
 
+- (void)containerRemoveFromParentViewController {
+	[self willMoveToParentViewController:nil];
+	[self.view removeFromSuperview];
+	[self removeFromParentViewController];
 }
 
 @end
